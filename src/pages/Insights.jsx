@@ -168,8 +168,57 @@ export default function Insights() {
         </div>
       )}
 
-      {/* AI Model Explanation */}
+      {/* AI Model Explanation */
+        {/* AI Model Explanation */}
       <div className="card fade-up" style={{ marginBottom: 24, background: 'var(--ink)', color: 'white', border: 'none' }}>
+        <div style={{ fontSize: 11, letterSpacing: '1px', textTransform: 'uppercase', color: 'rgba(255,255,255,0.4)', marginBottom: 14 }}>
+          How Your Score Is Calculated
+        </div>
+        <div style={{ fontFamily: "'Syne', sans-serif", fontWeight: 700, fontSize: 16, marginBottom: 16 }}>
+          5 Factors Drive Your Risk Level
+        </div>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+          {[
+            { label: 'Stress Trend',        weight: 30, color: '#E05A5A', icon: '😓', desc: 'How much your stress has risen recently' },
+            { label: 'Sleep Decline',        weight: 25, color: '#4B7FFF', icon: '🌙', desc: 'Drop in sleep quality vs your baseline' },
+            { label: 'Workload Intensity',   weight: 20, color: '#E8A020', icon: '📚', desc: 'Current academic pressure level' },
+            { label: 'Mood Volatility',      weight: 15, color: '#8B7FD4', icon: '💭', desc: 'Emotional fluctuation over recent days' },
+            { label: 'Nutrition Stability',  weight: 10, color: '#2BBFA4', icon: '🥗', desc: 'Consistency of healthy eating habits' },
+          ].map(f => (
+            <div key={f.label} style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
+              <div style={{
+                width: 36, height: 36, borderRadius: 10, flexShrink: 0,
+                background: `${f.color}18`,
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+                fontSize: 16,
+              }}>{f.icon}</div>
+              <div style={{ flex: 1 }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 5 }}>
+                  <span style={{ fontSize: 13, fontWeight: 600, color: 'white' }}>{f.label}</span>
+                  <span style={{ fontSize: 12, fontWeight: 700, color: f.color, fontFamily: "'JetBrains Mono', monospace" }}>{f.weight}%</span>
+                </div>
+                <div style={{ height: 5, background: 'rgba(255,255,255,0.08)', borderRadius: 10, overflow: 'hidden' }}>
+                  <div style={{ height: '100%', width: `${f.weight * 2}%`, background: f.color, borderRadius: 10 }} />
+                </div>
+                <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.35)', marginTop: 3 }}>{f.desc}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+        <div style={{ display: 'flex', gap: 12, marginTop: 18, flexWrap: 'wrap' }}>
+          {[
+            { range: '0 – 39', label: 'Low Risk', color: '#2BBFA4' },
+            { range: '40 – 69', label: 'Moderate Risk', color: '#E8A020' },
+            { range: '70 – 100', label: 'High Risk', color: '#E05A5A' },
+          ].map(r => (
+            <div key={r.label} style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 12, color: 'rgba(255,255,255,0.6)' }}>
+              <div style={{ width: 8, height: 8, borderRadius: '50%', background: r.color }} />
+              <span style={{ color: r.color, fontWeight: 700 }}>{r.range}</span>
+              <span>{r.label}</span>
+            </div>
+          ))}
+        </div>
+      </div>
         <div style={{ fontSize: 11, letterSpacing: '1px', textTransform: 'uppercase', color: 'rgba(255,255,255,0.4)', marginBottom: 14 }}>
           Model Architecture
         </div>
@@ -234,3 +283,4 @@ export default function Insights() {
     </div>
   )
 }
+
