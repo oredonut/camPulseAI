@@ -168,7 +168,6 @@ export default function Insights() {
         </div>
       )}
 
-      {/* AI Model Explanation */
         {/* AI Model Explanation */}
       <div className="card fade-up" style={{ marginBottom: 24, background: 'var(--ink)', color: 'white', border: 'none' }}>
         <div style={{ fontSize: 11, letterSpacing: '1px', textTransform: 'uppercase', color: 'rgba(255,255,255,0.4)', marginBottom: 14 }}>
@@ -283,4 +282,5 @@ export default function Insights() {
     </div>
   )
 }
+
 
